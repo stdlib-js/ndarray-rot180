@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,16 +16,37 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
+
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@main/index.d.ts"/>
+
+import { ndarray } from '@stdlib/types/ndarray';
+import { Collection } from '@stdlib/types/array';
 
 /**
-* Return a read-only view of an input ndarray rotated 180 degrees in a specified plane.
+* Interface defining function options.
+*/
+interface Options {
+	/**
+	* Dimension indices defining the plane of rotation (default: [-2, -1]).
+	*/
+	dims?: Collection<number>;
+}
+
+/**
+* Returns a read-only view of an input ndarray rotated 180 degrees in a specified plane.
 *
-* @module @stdlib/ndarray-rot180
+* ## Notes
+*
+* -   Each provided dimension index must reside on the interval `[-ndims, ndims-1]`.
+*
+* @param x - input array
+* @param options - function options
+* @param options.dims - dimension indices defining the plane of rotation (default: [-2, -1])
+* @returns output array
 *
 * @example
 * var array = require( '@stdlib/ndarray-array' );
-* var rot180 = require( '@stdlib/ndarray-rot180' );
 *
 * var x = array( [ [ 1.0, 2.0 ], [ 3.0, 4.0 ] ] );
 * // returns <ndarray>[ [ 1.0, 2.0 ], [ 3.0, 4.0 ] ]
@@ -33,12 +54,9 @@
 * var y = rot180( x );
 * // returns <ndarray>[ [ 4.0, 3.0 ], [ 2.0, 1.0 ] ]
 */
-
-// MODULES //
-
-var main = require( './main.js' );
+declare function rot180<T extends ndarray = ndarray>( x: T, options?: Options ): T;
 
 
 // EXPORTS //
 
-module.exports = main;
+export = rot180;
